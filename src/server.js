@@ -1,14 +1,15 @@
-import react from 'react';
-import  { renderToString } from 'react-dom/server';
 import express from 'express';
-import Restaurant from './components/Restaurant';
+import  { renderer } from './helpers/renderer';
+import { createStore } from './helpers/createStore';
 
 const app = express()
  
 app.get('/', (req, res) => {
-  const content = renderToString(<Restaurant />);
+  const store = createStore();
 
-  res.send(content);
+  // Initialize the store here.
+
+  res.send(renderer(req, store));
 })
  
 app.listen(3000, () => {

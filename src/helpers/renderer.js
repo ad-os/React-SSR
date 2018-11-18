@@ -10,5 +10,12 @@ export default (req, store) => {
     </Provider>
   );
 
-  return content;
+  return `
+    <html>
+      <head></head>
+      <body>
+        <div id="root">${content}</div>
+      </body>
+    </html>
+  `;
 }
